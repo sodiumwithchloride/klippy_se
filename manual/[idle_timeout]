@@ -1,0 +1,18 @@
+[idle_timeout]
+gcode:
+  {% if printer.pause_resume.is_paused %}
+    SET_HEATER_TEMPERATURE HEATER=extruder TARGET=0
+  {% else %}
+    TURN_OFF_HEATERS
+  {% endif %}
+#Idle timeout (in seconds)
+timeout: 1800
+
+#[idle_timeout] #Configuration reference from https://www.klipper3d.org/Config_Reference.html#idle_timeout
+#gcode:
+#   A list of G-Code commands to execute on an idle timeout. See
+#   docs/Command_Templates.md for G-Code format. The default is to run
+#   "TURN_OFF_HEATERS" and "M84".
+#timeout: 600
+#   Idle time (in seconds) to wait before running the above G-Code
+#   commands. The default is 600 seconds.
